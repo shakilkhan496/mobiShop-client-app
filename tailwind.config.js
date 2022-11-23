@@ -10,6 +10,7 @@ module.exports = {
           primary: '#FF512F',
           secondary: '#DD2476',
           accent: '#394E62',
+          'base-100': '#ffffff',
         }
       }
     ]
@@ -18,5 +19,5 @@ module.exports = {
   theme: {
     extend: {},
   },
-  plugins: [require("daisyui")],
+  plugins: [require("daisyui", "tailwindcss-animation-delay")],
 }
