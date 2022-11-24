@@ -4,13 +4,9 @@ import verifiedLogo from '../../../assets/icon/bluetik.png'
 import BookModal from './BookModal/BookModal';
 
 const MobilesCard = ({ mobile, setBooking }) => {
-    const { OriginalPrice, img, isVerified, location, postTime, productName, resalePrice, sellerName, useTime, _id } = mobile;
+    const { OriginalPrice, img, isVerified, location, postTime, productName, resalePrice, sellerName, useTime } = mobile;
 
 
-
-    const handleBooking = () => {
-
-    }
     return (
         <div className="card font-mono shadow hover:shadow-xl">
             <figure><img src={img} alt="Shoes" /></figure>

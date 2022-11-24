@@ -9,7 +9,7 @@ import BookModal from './BookModal/BookModal';
 const Products = () => {
     const mobiles = useLoaderData();
     const { loading } = useContext(AuthContext);
-    const [booking, setBooking] = useState(null);
+    const [booking, setBooking] = useState([]);
 
 
     return (
