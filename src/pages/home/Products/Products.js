@@ -9,7 +9,7 @@ import BookModal from './BookModal/BookModal';
 const Products = () => {
     const mobiles = useLoaderData();
     const { loading } = useContext(AuthContext);
-    const [booking, setBooking] = useState([]);
+    const [booking, setBooking] = useState(null);
 
 
     return (
@@ -27,9 +27,13 @@ const Products = () => {
                     </div>
             }
             <div>
-                <BookModal
-                    booking={booking}
-                ></BookModal>
+                {
+                    booking &&
+                    <BookModal
+                        setBooking={setBooking}
+                        booking={booking}
+                    ></BookModal>
+                }
             </div>
         </div>
     );

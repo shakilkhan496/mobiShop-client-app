@@ -14,7 +14,6 @@ const Navbar = () => {
         logOut()
             .then(() => {
                 toast.success(`Logged out successfully`);
-                window.location.reload(false);
             })
             .catch(err => console.error(err));
     }

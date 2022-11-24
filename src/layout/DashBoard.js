@@ -1,5 +1,5 @@
 import React from 'react';
-import { Outlet } from 'react-router-dom';
+import { Link, Outlet } from 'react-router-dom';
 import Footer from '../shared/Footer/Footer';
 import Navbar from '../shared/Navbar/Navbar';
 
@@ -14,10 +14,9 @@ const DashBoard = () => {
                 </div>
                 <div className="drawer-side">
                     <label htmlFor="dashboard" className="drawer-overlay"></label>
-                    <ul className="menu p-4 w-80 bg-base-100 text-base-content">
+                    <ul className="menu p-4 lg:w-60 w-40 bg-white text-black font-mono">
 
-                        <li><a>Sidebar Item 1</a></li>
-                        <li><a>Sidebar Item 2</a></li>
+                        <li><Link to={`/dashboard`} className='btn  hover:outline-primary btn-ghost'>My orders</Link></li>
                     </ul>
 
                 </div>

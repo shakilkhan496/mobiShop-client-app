@@ -4,9 +4,9 @@ import React, { useContext } from 'react';
 import toast from 'react-hot-toast';
 import { AuthContext } from '../../../../contexts/AuthProvider';
 
-const BookModal = ({ booking }) => {
+const BookModal = ({ booking, setBooking }) => {
     const { user } = useContext(AuthContext);
-    const { productName, resalePrice, sellerEmail } = booking;
+    const { productName, resalePrice, sellerEmail, img } = booking;
     console.log(booking);
     const handleSubmit = (e) => {
         e.preventDefault();
@@ -21,7 +21,8 @@ const BookModal = ({ booking }) => {
             resalePrice,
             buyerName: user?.displayName,
             buyerEmail: user?.email,
-            sellerEmail: sellerEmail
+            sellerEmail: sellerEmail,
+            img
         }
         fetch('http://localhost:5000/bookings', {
             method: 'POST',
@@ -34,6 +35,7 @@ const BookModal = ({ booking }) => {
             .then(data => {
                 if (data.acknowledged === true) {
                     toast.success('Product booked successfully')
+                    setBooking(null);
                     //navigate
                 }
             })
@@ -89,14 +91,14 @@ const BookModal = ({ booking }) => {
                                             <label className="label">
                                                 <span className="label-text text-sm">Your phone number</span>
                                             </label>
-                                            <input type="number" name='phoneNumber' placeholder='enter your phone number' className="input input-bordered" />
+                                            <input required type="number" name='phoneNumber' placeholder='enter your phone number' className="input input-bordered" />
                                         </div>
 
                                         <div className="form-control">
                                             <label className="label">
                                                 <span className="label-text text-sm">Meeting Location</span>
                                             </label>
-                                            <input type="text" name='meetingLocation' className="input input-bordered" />
+                                            <input required type="text" name='meetingLocation' className="input input-bordered" />
                                         </div>
                                         <div className="form-control mt-6">
                                             <button className="btn btn-primary">Submit</button>
