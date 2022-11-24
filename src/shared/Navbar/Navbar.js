@@ -1,18 +1,37 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import Button from '../../components/Button/Button';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faMobile } from '@fortawesome/free-solid-svg-icons';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
+import { AuthContext } from '../../contexts/AuthProvider';
+import toast from 'react-hot-toast';
+import { reload } from 'firebase/auth';
 
 
 const Navbar = () => {
+    const { user, logOut } = useContext(AuthContext);
+    const handleLogOut = () => {
+        logOut()
+            .then(() => {
+                toast.success(`Logged out successfully`);
+                window.location.reload(false);
+            })
+            .catch(err => console.error(err));
+    }
     const navMenus = <>
         <li><Link to='/' className=' btn-ghost'>Home</Link></li>
-
-        <li><Link to='/login'><Button cls={'text-white font-semibold '}>Login</Button></Link></li>
+        {
+            user?.uid ?
+                <>
+                    <li><Link to='/dashboard'>Dashboard</Link></li>
+                    <li><button onClick={handleLogOut} className='text-white bg-primary btn rounded-md  font-semibold'>Logout</button></li>
+                </>
+                :
+                <li><Link to='/login'><Button cls={'text-white font-semibold '}>Login</Button></Link></li>
+        }
     </>
     return (
-        <div className="navbar  text-black">
+        <div className="navbar sticky top-0 z-50 bg-white shadow  text-black">
             <div className="navbar-start">
                 <div className="dropdown">
                     <label tabIndex={0} className="btn btn-ghost lg:hidden">
