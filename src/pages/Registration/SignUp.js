@@ -1,11 +1,12 @@
 import React, { useContext, useState } from 'react';
 import toast from 'react-hot-toast';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
+import Loading from '../../components/Loading/Loading';
 import { AuthContext } from '../../contexts/AuthProvider';
 
 const SignUp = () => {
     const [err, setErr] = useState('');
-    const { updateUserProfile, createUser } = useContext(AuthContext);
+    const { updateUserProfile, createUser, loading } = useContext(AuthContext);
     const location = useLocation();
     const navigate = useNavigate();
     const from = location?.state?.from?.pathname || '/';
@@ -53,55 +54,59 @@ const SignUp = () => {
     }
     return (
         <div className="hero min-h-screen">
-            <div className="hero-content flex-col">
-                <div className="text-center lg:text-left">
+            {
+                loading ? <Loading></Loading>
+                    :
+                    <div className="hero-content flex-col">
+                        <div className="text-center lg:text-left">
 
-                </div>
-                <div className="card flex-shrink-0 w-full max-w-sm shadow-2xl bg-base-100">
-                    <h1 className="text-2xl mt-10 text-center font-mono  font-semibold">Register</h1>
+                        </div>
+                        <div className="card flex-shrink-0 w-full max-w-sm shadow-2xl bg-base-100">
+                            <h1 className="text-2xl mt-10 text-center font-mono  font-semibold">Register</h1>
 
-                    <form onSubmit={handleSubmit} className="card-body">
+                            <form onSubmit={handleSubmit} className="card-body">
 
-                        <div className="form-control">
-                            <label className="label">
-                                <span className="label-text">Your name</span>
-                            </label>
-                            <input name='name' type="text" placeholder="name" className="input input-bordered" />
-                        </div>
+                                <div className="form-control">
+                                    <label className="label">
+                                        <span className="label-text">Your name</span>
+                                    </label>
+                                    <input name='name' type="text" placeholder="name" className="input input-bordered" />
+                                </div>
 
-                        <div className="form-control">
-                            <label className="label">
-                                <span className="label-text">Email</span>
-                            </label>
-                            <input name='email' type="email" placeholder="email" className="input input-bordered" />
-                        </div>
-                        <div className="form-control">
-                            <label className="label">
-                                <span className="label-text">Password</span>
-                            </label>
-                            <input name='password' type="password" placeholder="password" className="input input-bordered" />
-                        </div>
+                                <div className="form-control">
+                                    <label className="label">
+                                        <span className="label-text">Email</span>
+                                    </label>
+                                    <input name='email' type="email" placeholder="email" className="input input-bordered" />
+                                </div>
+                                <div className="form-control">
+                                    <label className="label">
+                                        <span className="label-text">Password</span>
+                                    </label>
+                                    <input name='password' type="password" placeholder="password" className="input input-bordered" />
+                                </div>
 
-                        <div className="form-control">
-                            <select name='slot' defaultValue={'User'} className='input-bordered input'>
-                                <option value='user'>User</option>
-                                <option value='seller'>Seller</option>
-                            </select>
-                        </div>
+                                <div className="form-control">
+                                    <select name='slot' defaultValue={'User'} className='input-bordered input'>
+                                        <option value='user'>User</option>
+                                        <option value='seller'>Seller</option>
+                                    </select>
+                                </div>
 
-                        <div className='text-red-600'>
-                            <p>{err}</p>
-                        </div>
+                                <div className='text-red-600'>
+                                    <p>{err}</p>
+                                </div>
 
-                        <div className='text-sm font-mono'>
-                            <p>Already have an account?</p> <p className='text-primary hover:link   ' ><Link className='animate-pulse' to='/signup'>Login</Link></p >
+                                <div className='text-sm font-mono'>
+                                    <p>Already have an account?</p> <p className='text-primary hover:link   ' ><Link className='animate-pulse' to='/signup'>Login</Link></p >
+                                </div>
+                                <div className="form-control mt-6">
+                                    <button className="btn btn-primary">Signup</button>
+                                </div>
+                            </form>
                         </div>
-                        <div className="form-control mt-6">
-                            <button className="btn btn-primary">Signup</button>
-                        </div>
-                    </form>
-                </div>
-            </div>
+                    </div>
+            }
         </div>
     );
 };

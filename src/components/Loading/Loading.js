@@ -1,14 +1,11 @@
 import React from 'react';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faMobile } from '@fortawesome/free-solid-svg-icons';
 
 const Loading = () => {
     return (
-        <div>
-            <button type="button" class="bg-primary ..." disabled>
-                <svg class="animate-spin h-5 w-5 mr-3 ..." viewBox="0 0 24 24">
-                    ...
-                </svg>
-                Processing...
-            </button>
+        <div className='min-h-screen animate-spin text-8xl flex justify-center items-center'>
+            <FontAwesomeIcon icon={faMobile}></FontAwesomeIcon>
         </div>
     );
 };

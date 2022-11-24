@@ -4,10 +4,12 @@ import { useLoaderData } from 'react-router-dom';
 import MobilesCard from './MobilesCard';
 import Loading from '../../../components/Loading/Loading';
 import { AuthContext } from '../../../contexts/AuthProvider';
+import BookModal from './BookModal/BookModal';
 
 const Products = () => {
     const mobiles = useLoaderData();
-    // const { loading } = useContext(AuthContext);
+    const { loading } = useContext(AuthContext);
+    const [booking, setBooking] = useState(null);
 
 
     return (
@@ -15,10 +17,19 @@ const Products = () => {
             <div className='text-center font-mono pt-5 text-2xl'>
                 <h1>Your selected phones</h1>
             </div>
-            <div className='grid lg:p-20 lg:grid-cols-3 md:grid-cols-2 grid-cols-1 justify-items-center gap-5'>
-                {
-                    mobiles?.map(mobile => <MobilesCard key={mobile._id} mobile={mobile}></MobilesCard>)
-                }
+            {
+                loading ? <Loading></Loading>
+                    :
+                    <div className='grid lg:p-20 lg:grid-cols-3 md:grid-cols-2 grid-cols-1 justify-items-center gap-5'>
+                        {
+                            mobiles?.map(mobile => <MobilesCard setBooking={setBooking} key={mobile._id} mobile={mobile}></MobilesCard>)
+                        }
+                    </div>
+            }
+            <div>
+                <BookModal
+                    booking={booking}
+                ></BookModal>
             </div>
         </div>
     );
