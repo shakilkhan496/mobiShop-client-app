@@ -21,6 +21,7 @@ const MyProducts = () => {
             method: 'PUT',
             headers: {
                 'Content-Type': 'application/json',
+                authorization: `bearer ${localStorage.getItem('token')}`
             },
             body: JSON.stringify({
                 id

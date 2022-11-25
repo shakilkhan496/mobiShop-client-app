@@ -1,6 +1,8 @@
 import { createBrowserRouter } from "react-router-dom";
+import ErrorRoute from "../ErrorRoute/ErrorRoute";
 import DashBoard from "../layout/DashBoard";
 import Main from "../layout/Main";
+import Blogs from "../pages/Blogs/Blogs";
 import AddProducts from "../pages/DashBoard/AddProducts/AddProducts";
 import Allseller from "../pages/DashBoard/Allseller/Allseller";
 import AllUsers from "../pages/DashBoard/AllUsers/AllUsers";
@@ -20,14 +22,10 @@ import SellerRoute from "./SellerRoute";
 export const route = createBrowserRouter([
     {
         path: '/',
-        errorElement: <p>404 not found</p>,
+        errorElement: <ErrorRoute></ErrorRoute>,
         element: <Main></Main>,
         children: [
-            {
-                path: '/',
-                element: <Home></Home>
-            }
-            ,
+
             {
                 path: '/',
                 element: <Home></Home>
@@ -47,10 +45,16 @@ export const route = createBrowserRouter([
                 element: <PrivateRoute><Products></Products></PrivateRoute>,
                 loader: ({ params }) => fetch(`http://localhost:5000/category/${params.id}`),
             }
+            ,
+            {
+                path: '/blogs',
+                element: <Blogs></Blogs>
+            }
         ]
     },
     {
         path: '/dashboard',
+        errorElement: <ErrorRoute></ErrorRoute>,
         element: <PrivateRoute><DashBoard></DashBoard></PrivateRoute>,
         children: [
             {
