@@ -18,12 +18,6 @@ const MyOrders = () => {
     return (
         <div>
             <div>
-                {
-                    isLoading && <Loading></Loading>
-                }
-                My orders
-            </div>
-            <div>
                 <div className="overflow-x-auto w-full">
                     <table className="table w-full">
 

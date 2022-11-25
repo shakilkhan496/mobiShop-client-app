@@ -109,7 +109,7 @@ const SignUp = () => {
                                 </div>
 
                                 <div className='text-sm font-mono'>
-                                    <p>Already have an account?</p> <p className='text-primary hover:link   ' ><Link className='animate-pulse' to='/signup'>Login</Link></p >
+                                    <p>Already have an account?</p> <p className='text-primary hover:link   ' ><Link className='animate-pulse' to='/login'>Login</Link></p >
                                 </div>
                                 <div className="form-control mt-6">
                                     <button className="btn btn-primary">Signup</button>
