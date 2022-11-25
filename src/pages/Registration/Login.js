@@ -4,13 +4,20 @@ import { Link, useLocation, useNavigate } from 'react-router-dom';
 import Loading from '../../components/Loading/Loading';
 import SmallSpin from '../../components/Loading/SmallSpin';
 import { AuthContext } from '../../contexts/AuthProvider';
+import useToken from '../../hooks/useToken';
 
 const Login = () => {
     const { emailLogin, googleLogin, loading } = useContext(AuthContext);
     const [err, setErr] = useState();
+    const [loginEmail, setLoginEmail] = useState('');
+    const [token] = useToken(loginEmail);
     const navigate = useNavigate();
     const location = useLocation();
     const from = location?.state?.from?.pathname || '/';
+
+    if (token) {
+        navigate(from, { replace: true });
+    }
 
     const handleSubmit = (e) => {
 
@@ -23,7 +30,8 @@ const Login = () => {
             .then(res => {
                 const user = res.user;
                 toast.success(`Logined as ${user.displayName}`);
-                navigate(from, { replace: true });
+                setLoginEmail(user.email);
+
             })
             .catch(err => {
                 toast.error(err.message);
@@ -37,6 +45,7 @@ const Login = () => {
         googleLogin()
             .then(res => {
                 const user = res.user;
+
                 const userdata = {
                     name: user.displayName,
                     email: user.email,
@@ -53,8 +62,9 @@ const Login = () => {
                     .then(res => res.json())
                     .then((data) => {
                         console.log(data);
+                        setLoginEmail(user.email);
                         toast.success('Login successful')
-                        navigate(from, { replace: true });
+
                     })
             })
     }

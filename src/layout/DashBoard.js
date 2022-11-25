@@ -1,9 +1,18 @@
-import React from 'react';
+import { useQuery } from '@tanstack/react-query';
+import React, { useContext, useState } from 'react';
 import { Link, Outlet } from 'react-router-dom';
+import { AuthContext } from '../contexts/AuthProvider';
+import useAdmin from '../hooks/useAdmin';
+import useBuyer from '../hooks/useBuyer';
+import useSeller from '../hooks/useSeller';
 import Footer from '../shared/Footer/Footer';
 import Navbar from '../shared/Navbar/Navbar';
 
 const DashBoard = () => {
+    const { user } = useContext(AuthContext);
+    const [isAdmin] = useAdmin(user.email);
+    const [isSeller] = useSeller(user.email);
+    const [isUser] = useBuyer(user.email);
     return (
         <div className='max-w-7xl mx-auto'>
             <Navbar></Navbar>
@@ -15,8 +24,34 @@ const DashBoard = () => {
                 <div className="drawer-side">
                     <label htmlFor="dashboard" className="drawer-overlay"></label>
                     <ul className="menu p-4 lg:w-60 w-40 bg-white text-black font-mono">
+                        {
+                            isAdmin && <>
+                                <li><Link to={`/dashboard/allSellers`} className='btn  hover:outline-primary btn-ghost'>All Sellers</Link></li>
+                                <li><Link to={`/dashboard/reportedItems`} className='btn  hover:outline-primary btn-ghost'>Reported Items</Link></li>
+                                <li><Link to={`/dashboard/allUsers`} className='btn  hover:outline-primary btn-ghost'>All Users</Link></li>
+                            </>
+                        }
 
-                        <li><Link to={`/dashboard`} className='btn  hover:outline-primary btn-ghost'>My orders</Link></li>
+                        {
+                            isSeller && <>
+                                <li><Link to={`/dashboard/myProducts`} className='btn  hover:outline-primary btn-ghost'>My Products</Link></li>
+                                <li><Link to={`/dashboard/addProducts`} className='btn  hover:outline-primary btn-ghost'>Add Products</Link></li>
+                            </>
+                        }
+
+
+
+                        {
+                            isUser &&
+                            <li><Link to={`/dashboard`} className='btn  hover:outline-primary btn-ghost'>My orders</Link></li>
+                        }
+
+
+
+
+
+
+
                     </ul>
 
                 </div>

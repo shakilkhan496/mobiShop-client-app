@@ -3,25 +3,25 @@ import React, { useContext } from 'react';
 import Loading from '../../../components/Loading/Loading';
 import { AuthContext } from '../../../contexts/AuthProvider';
 
-const MyOrders = () => {
+const MyProducts = () => {
     const { user } = useContext(AuthContext);
-    const { data: myOrders = [], isLoading } = useQuery({
-        queryKey: ['myOrders'],
-        queryFn: () => fetch(`http://localhost:5000/myOrders?email=${user.email}`, {
+    const { data: myProducts = [], isLoading } = useQuery({
+        queryKey: ['myProducts'],
+        queryFn: () => fetch(`http://localhost:5000/myProducts?email=${user.email}`, {
             headers: {
                 authorization: `bearer ${localStorage.getItem('token')}`
             }
         })
             .then(res => res.json())
     })
-    console.log(myOrders);
+
     return (
         <div>
             <div>
                 {
                     isLoading && <Loading></Loading>
                 }
-                My orders
+                My Products
             </div>
             <div>
                 <div className="overflow-x-auto w-full">
@@ -37,14 +37,14 @@ const MyOrders = () => {
                                 <th>Product</th>
                                 <th>Title</th>
                                 <th>Price</th>
-                                <th>Payment status</th>
-                                <th></th>
+                                <th>Delete</th>
+
                             </tr>
                         </thead>
                         <tbody>
 
                             {
-                                myOrders?.map((myOrder, idx) => <tr key={idx}>
+                                myProducts?.map((myOrder, idx) => <tr key={idx}>
                                     <th>
                                         <label>
                                             {idx + 1}
@@ -64,7 +64,7 @@ const MyOrders = () => {
                                     </td>
                                     <td>{myOrder.resalePrice}</td>
                                     <th>
-                                        <button className="btn bg-primary btn-ghost btn-xs px-4 text-white font-mono">Pay</button>
+                                        <button className="btn bg-primary btn-ghost btn-xs px-4 text-white font-mono">Delete</button>
                                     </th>
                                 </tr>)
                             }
@@ -80,4 +80,4 @@ const MyOrders = () => {
     );
 };
 
-export default MyOrders;
+export default MyProducts;

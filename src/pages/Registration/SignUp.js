@@ -3,13 +3,22 @@ import toast from 'react-hot-toast';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import Loading from '../../components/Loading/Loading';
 import { AuthContext } from '../../contexts/AuthProvider';
+import useToken from '../../hooks/useToken';
 
 const SignUp = () => {
     const [err, setErr] = useState('');
     const { updateUserProfile, createUser, loading } = useContext(AuthContext);
+    const [createdUserEmail, setCreatedUserEmail] = useState('')
+    const [token] = useToken(createdUserEmail);
     const location = useLocation();
     const navigate = useNavigate();
     const from = location?.state?.from?.pathname || '/';
+
+    if (token) {
+        navigate(from, { replace: true });
+    }
+
+
     const handleSubmit = (e) => {
         setErr('')
         e.preventDefault();
@@ -31,7 +40,7 @@ const SignUp = () => {
                 console.log(user)
                 toast.success(`Signed up as ${user.email}`)
                 form.reset();
-                navigate(from, { replace: true })
+
                 fetch('http://localhost:5000/users', {
                     method: 'POST',
                     headers: {
@@ -42,6 +51,7 @@ const SignUp = () => {
                     .then(res => res.json())
                     .then((data) => {
                         console.log(data);
+                        setCreatedUserEmail(email);
                     })
 
             })
@@ -49,9 +59,10 @@ const SignUp = () => {
                 setErr(err.message)
                 toast.error(err.message)
             })
-
-
     }
+
+
+
     return (
         <div className="hero min-h-screen">
             {
