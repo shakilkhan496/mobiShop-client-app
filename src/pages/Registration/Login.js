@@ -7,17 +7,19 @@ import { AuthContext } from '../../contexts/AuthProvider';
 import useToken from '../../hooks/useToken';
 
 const Login = () => {
-    const { emailLogin, googleLogin, loading } = useContext(AuthContext);
+    const { emailLogin, googleLogin, loading, setLoading } = useContext(AuthContext);
     const [err, setErr] = useState();
     const [loginEmail, setLoginEmail] = useState('');
     const [token] = useToken(loginEmail);
-    const navigate = useNavigate();
     const location = useLocation();
+    const navigate = useNavigate();
     const from = location?.state?.from?.pathname || '/';
 
     if (token) {
         navigate(from, { replace: true });
     }
+
+
 
     const handleSubmit = (e) => {
 
@@ -29,13 +31,14 @@ const Login = () => {
         emailLogin(email, password)
             .then(res => {
                 const user = res.user;
-                toast.success(`Logined as ${user.displayName}`);
+                toast.success(`Log in successfully`);
                 setLoginEmail(user.email);
 
             })
             .catch(err => {
                 toast.error(err.message);
                 setErr(err.message);
+                setLoading(false)
             })
 
 
@@ -53,7 +56,7 @@ const Login = () => {
                 }
 
                 fetch('http://localhost:5000/users', {
-                    method: 'POST',
+                    method: 'PUT',
                     headers: {
                         'Content-Type': 'application/json'
                     },
@@ -63,7 +66,7 @@ const Login = () => {
                     .then((data) => {
                         console.log(data);
                         setLoginEmail(user.email);
-                        toast.success('Login successful')
+                        toast.success('Login successful');
 
                     })
             })

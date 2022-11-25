@@ -28,7 +28,7 @@ const DashBoard = () => {
                             isAdmin && <>
                                 <li><Link to={`/dashboard/allSellers`} className='btn  hover:outline-primary btn-ghost'>All Sellers</Link></li>
                                 <li><Link to={`/dashboard/reportedItems`} className='btn  hover:outline-primary btn-ghost'>Reported Items</Link></li>
-                                <li><Link to={`/dashboard/allUsers`} className='btn  hover:outline-primary btn-ghost'>All Users</Link></li>
+                                <li><Link to={`/dashboard/allUsers`} className='btn  hover:outline-primary btn-ghost'>All Buyers</Link></li>
                             </>
                         }
 

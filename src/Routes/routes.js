@@ -12,7 +12,6 @@ import Products from "../pages/home/Products/Products";
 import Login from "../pages/Registration/Login";
 import SignUp from "../pages/Registration/SignUp";
 import AdminRoute from "./AdminRoute";
-import BuyerRoute from "./BuyerRoute";
 import PrivateRoute from "./PrivateRoute";
 import SellerRoute from "./SellerRoute";
 

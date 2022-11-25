@@ -5,7 +5,7 @@ import { AuthContext } from '../../../contexts/AuthProvider';
 
 const MyOrders = () => {
     const { user } = useContext(AuthContext);
-    const { data: myOrders = [], isLoading } = useQuery({
+    const { data: myOrders = [] } = useQuery({
         queryKey: ['myOrders'],
         queryFn: () => fetch(`http://localhost:5000/myOrders?email=${user.email}`, {
             headers: {

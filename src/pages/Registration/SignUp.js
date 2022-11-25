@@ -7,7 +7,7 @@ import useToken from '../../hooks/useToken';
 
 const SignUp = () => {
     const [err, setErr] = useState('');
-    const { updateUserProfile, createUser, loading } = useContext(AuthContext);
+    const { updateUserProfile, createUser, loading, setLoading } = useContext(AuthContext);
     const [createdUserEmail, setCreatedUserEmail] = useState('')
     const [token] = useToken(createdUserEmail);
     const location = useLocation();
@@ -42,7 +42,7 @@ const SignUp = () => {
                 form.reset();
 
                 fetch('http://localhost:5000/users', {
-                    method: 'POST',
+                    method: 'PUT',
                     headers: {
                         'Content-Type': 'application/json'
                     },
@@ -57,7 +57,8 @@ const SignUp = () => {
             })
             .catch(err => {
                 setErr(err.message)
-                toast.error(err.message)
+                toast.error(err.message);
+                setLoading(false);
             })
     }
 

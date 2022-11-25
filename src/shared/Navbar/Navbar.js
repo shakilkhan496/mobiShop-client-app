@@ -14,15 +14,18 @@ const Navbar = () => {
         logOut()
             .then(() => {
                 toast.success(`Logged out successfully`);
+                localStorage.removeItem('token');
             })
             .catch(err => console.error(err));
     }
     const navMenus = <>
         <li><Link to='/' className=' btn-ghost'>Home</Link></li>
+        <li><Link to='/blogs' className=' btn-ghost'>Blogs </Link></li>
         {
             user?.uid ?
                 <>
                     <li><Link to='/dashboard'>Dashboard</Link></li>
+                    <p className='text-xs p-4 font-bold bg-black rounded-full text-white px-3 mr-2 '>{user.displayName}</p>
                     <li><button onClick={handleLogOut} className='text-white bg-primary btn rounded-md  font-semibold'>Logout</button></li>
                 </>
                 :

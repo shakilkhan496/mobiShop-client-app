@@ -1,9 +1,31 @@
-import React, { useContext } from 'react';
+import React from 'react';
+import toast from 'react-hot-toast';
 import verifiedLogo from '../../../assets/icon/bluetik.png'
 
 const MobilesCard = ({ mobile, setBooking }) => {
-    const { OriginalPrice, img, isVerified, location, postTime, productName, resalePrice, sellerName, useTime } = mobile;
+    const { OriginalPrice, img, isVerified, location, postTime, productName, resalePrice, sellerName, useTime, _id } = mobile;
 
+
+
+    const handleReport = (id) => {
+        const confirm = window.confirm('Are you sure you want to report this?');
+        if (confirm) {
+            fetch('http://localhost:5000/report', {
+                method: 'PUT',
+                headers: {
+                    'Content-Type': 'application/json',
+                    authorization: `bearer ${localStorage.getItem('token')}`
+                },
+                body: JSON.stringify({ id })
+            })
+                .then(res => res.json())
+                .then((data) => {
+                    if (data.modifiedCount > 0) {
+                        toast.success('Reported successfully')
+                    }
+                })
+        }
+    }
 
     return (
         <div className="card font-mono shadow hover:shadow-xl">
@@ -11,8 +33,8 @@ const MobilesCard = ({ mobile, setBooking }) => {
             <div className="card-body">
                 <div>
                     <h2 className="card-title">{productName}</h2>
-                    <p>Original Price : {OriginalPrice}</p>
-                    <p>Resale Price : {resalePrice}</p>
+                    <p>Original Price : {OriginalPrice} $</p>
+                    <p>Resale Price : {resalePrice} $</p>
                     <p>Location : {location}</p>
                     <p>{useTime} used</p>
 
@@ -26,6 +48,9 @@ const MobilesCard = ({ mobile, setBooking }) => {
                     <label
                         onClick={() => setBooking(mobile)}
                         htmlFor="booking-modal" className='btn w-full text-xl btn-primary'>Book Now</label>
+                </div>
+                <div>
+                    <button onClick={() => handleReport(_id)} className='btn btn-xs w-full bg-red-600 text-white normal-case' >Report This Item</button>
                 </div>
 
             </div>
