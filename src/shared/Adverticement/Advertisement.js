@@ -20,15 +20,19 @@ const Advertisement = () => {
                             advertisedProduct.map(advertised =>
                                 <marquee direction="right" >
                                     <div key={advertised._id} className='h-60  '>
-                                        <div className="card card-compact w-96 bg-base-100 shadow-xl">
-                                            <figure><img className='w-40' src={advertised.img} alt="Shoes" /></figure>
-                                            <div className="card-body">
-                                                <h2 className="card-title font-mono">{advertised.productName}</h2>
-                                                <p className='text-black font-mono font-bold'>Price:{advertised.resalePrice} $</p>
+                                        {
+                                            !advertised.paid === true
+                                            &&
+                                            <div className="card card-compact w-96 bg-base-100 shadow-xl">
+                                                <figure><img className='w-40' src={advertised.img} alt="Shoes" /></figure>
+                                                <div className="card-body">
+                                                    <h2 className="card-title font-mono">{advertised.productName}</h2>
+                                                    <p className='text-black font-mono font-bold'>Price:{advertised.resalePrice} $</p>
 
 
+                                                </div>
                                             </div>
-                                        </div>
+                                        }
                                     </div>
                                 </marquee>
                             )

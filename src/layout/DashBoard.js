@@ -56,6 +56,7 @@ const DashBoard = () => {
 
                 </div>
             </div>
+            <Footer></Footer>
 
         </div>
     );
