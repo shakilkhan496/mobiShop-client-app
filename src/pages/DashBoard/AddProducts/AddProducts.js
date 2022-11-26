@@ -54,7 +54,7 @@ const AddProducts = () => {
                     status: 'available'
                 }
 
-                fetch('http://localhost:5000/addProduct', {
+                fetch('https://assignment-12-server-sable.vercel.app/addProduct', {
                     method: 'POST',
                     headers: {
                         'Content-Type': 'application/json',

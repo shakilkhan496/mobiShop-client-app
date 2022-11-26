@@ -8,7 +8,7 @@ const MyProducts = () => {
     const { user } = useContext(AuthContext);
     const { data: myProducts = [], isLoading, refetch } = useQuery({
         queryKey: ['myProducts'],
-        queryFn: () => fetch(`http://localhost:5000/myProducts?email=${user.email}`, {
+        queryFn: () => fetch(`https://assignment-12-server-sable.vercel.app/myProducts?email=${user.email}`, {
             headers: {
                 authorization: `bearer ${localStorage.getItem('token')}`
             }
@@ -17,7 +17,7 @@ const MyProducts = () => {
     })
 
     const handleAd = (id) => {
-        fetch('http://localhost:5000/myProducts', {
+        fetch('https://assignment-12-server-sable.vercel.app/myProducts', {
             method: 'PUT',
             headers: {
                 'Content-Type': 'application/json',
@@ -39,7 +39,7 @@ const MyProducts = () => {
     const handleDelete = (id) => {
         const confirm = window.confirm('Are you sure you want to delete?')
         if (confirm) {
-            fetch('http://localhost:5000/delete', {
+            fetch('https://assignment-12-server-sable.vercel.app/delete', {
                 method: 'DELETE',
                 headers: {
                     'Content-Type': 'application/json',

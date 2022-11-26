@@ -10,7 +10,7 @@ const MobilesCard = ({ mobile, setBooking }) => {
     const handleReport = (id) => {
         const confirm = window.confirm('Are you sure you want to report this?');
         if (confirm) {
-            fetch('http://localhost:5000/report', {
+            fetch('https://assignment-12-server-sable.vercel.app/report', {
                 method: 'PUT',
                 headers: {
                     'Content-Type': 'application/json',
