@@ -19,6 +19,9 @@ const MyOrders = () => {
     return (
         <div>
             <div>
+                <h1 className='text-2xl font-mono font-bold p-10'>My orders</h1>
+            </div>
+            <div>
                 <div className="overflow-x-auto w-full">
                     <table className="table w-full">
 
@@ -48,20 +51,20 @@ const MyOrders = () => {
                                     <td>
                                         <div className="flex items-center space-x-3">
                                             <div className="avatar">
-                                                <div className="mask mask-squircle w-12 h-12">
+                                                <div className="mask  w-16 h-16">
                                                     <img src={myOrder.img} alt="Avatar Tailwind CSS Component" />
                                                 </div>
                                             </div>
                                         </div>
                                     </td>
                                     <td>
-                                        <p>{myOrder.productName}</p>
+                                        <p className='text-xl font-semibold font-mono'>{myOrder.productName}</p>
                                     </td>
-                                    <td>{myOrder.resalePrice}</td>
+                                    <td className='font-semibold text-xl text-primary'>{myOrder.resalePrice} $</td>
                                     <th>
                                         {
                                             myOrder.resalePrice && !myOrder.paid &&
-                                            <Link to={`dashboard/payment/${myOrder._id}`} className="btn bg-primary btn-ghost btn-xs px-4 text-white font-mono">
+                                            <Link to={`dashboard/payment/${myOrder._id}`} className="btn bg-green-600 btn-ghost btn-xs hover:scale-125 hover:bg-primary px-4 text-white font-mono">
                                                 Pay
                                             </Link>
                                         }

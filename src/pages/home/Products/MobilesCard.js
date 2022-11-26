@@ -35,16 +35,16 @@ const MobilesCard = ({ mobile, setBooking }) => {
                     <figure><img src={img} alt="Shoes" /></figure>
                     <div className="card-body">
                         <div>
-                            <h2 className="card-title">{productName}</h2>
+                            <h2 className="card-title text-2xl">{productName}</h2>
                             <p>Original Price : {OriginalPrice} $</p>
-                            <p>Resale Price : {resalePrice} $</p>
+                            <p className='text-primary font-bold text-xl'>Resale Price : {resalePrice} $</p>
                             <p>Location : {location}</p>
                             <p>{useTime} used</p>
 
                         </div>
                         <div>
                             <p className='flex items-center'>Seller Name : {sellerName} {isVerified === true ? <img className='w-6 bg-blue-200 rounded-full' alt='verified' src={verifiedLogo}></img> : ''} </p>
-                            <p>posted at{postTime}</p>
+                            <p className='text-secondary font-thin'>posted at{postTime}</p>
                         </div>
                         <p></p>
                         <div className="card-actions w-full">

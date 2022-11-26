@@ -8,8 +8,8 @@ const useAdmin = email => {
             fetch(`https://assignment-12-server-sable.vercel.app/users/admin/${email}`)
                 .then(res => res.json())
                 .then(data => {
-                    if (data.isAdmin) {
-                        setIsAdmin(data.isAdmin);
+                    if (data?.isAdmin) {
+                        setIsAdmin(data?.isAdmin);
                         setIsAdminLoading(false)
                     }
                 });

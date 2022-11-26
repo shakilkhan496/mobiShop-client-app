@@ -1,8 +1,7 @@
-import React, { useContext, useState } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import toast from 'react-hot-toast';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import Loading from '../../components/Loading/Loading';
-import SmallSpin from '../../components/Loading/SmallSpin';
 import { AuthContext } from '../../contexts/AuthProvider';
 import useTitle from '../../hooks/useTitle';
 import useToken from '../../hooks/useToken';
@@ -17,9 +16,11 @@ const Login = () => {
     const navigate = useNavigate();
     const from = location?.state?.from?.pathname || '/';
 
-    if (token) {
-        navigate(from, { replace: true });
-    }
+    useEffect(() => {
+        if (token) {
+            navigate(from, { replace: true });
+        }
+    }, [from, location, token, navigate])
 
 
 

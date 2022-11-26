@@ -1,5 +1,6 @@
 import { useQuery } from '@tanstack/react-query';
 import React from 'react';
+import { motion } from 'framer-motion'
 
 const Advertisement = () => {
     const { data: advertisedProduct = [] } = useQuery({
@@ -13,29 +14,36 @@ const Advertisement = () => {
             {
                 advertisedProduct.length > 0 &&
                 <div>
-                    <h1 className='lg:text-4xl md:text-4xl text-3xl text-center font-mono font-semibold mt-20 mb-20'>Our top <span className='text-primary'>products</span></h1>
-                    <div className='flex'>
+                    <h1 className='lg:text-4xl md:text-4xl text-3xl text-center font-mono font-semibold mt-20 mb-5'>Our Advertised <span className='text-primary'>products</span></h1>
+                    <div className='flex lg:mx-32'>
                         {
                             advertisedProduct &&
-                            advertisedProduct.map(advertised =>
-                                <marquee direction="right" >
-                                    <div key={advertised._id} className='h-60  '>
-                                        {
-                                            !advertised.paid === true
-                                            &&
-                                            <div className="card card-compact w-96 bg-base-100 shadow-xl">
-                                                <figure><img className='w-40' src={advertised.img} alt="Shoes" /></figure>
-                                                <div className="card-body">
-                                                    <h2 className="card-title font-mono">{advertised.productName}</h2>
-                                                    <p className='text-black font-mono font-bold'>Price:{advertised.resalePrice} $</p>
+
+                            <motion.div className='carouse rounded-lg shadow-inner  bg-primary bg-gradient-to-r from-transparent to-secondary py-6 cursor-grab overflow-hidden'>
+                                <motion.div drag={'x'} dragConstraints={{ right: 0, left: -500 }} className='inner-carousel justify-center  flex'>
+                                    {
+                                        advertisedProduct.map(advertised =>
+
+                                            <motion.div key={advertised._id} style={{ minWidth: '12rem' }} className='h-60 item pointer-events-none  '>
+                                                {
+                                                    !advertised.paid === true
+                                                    &&
+                                                    <div className="card card-compact   w-80 h-60 ml-4  bg-base-200 hover:scale-110 transition shadow-2xl">
+                                                        <figure><img className='w-40' src={advertised.img} alt="Shoes" /></figure>
+                                                        <div className="card-body">
+                                                            <h2 className="card-title font-mono">{advertised.productName}</h2>
+                                                            <p className='text-xl font-mono text-primary font-bold'>Price:{advertised.resalePrice} $</p>
 
 
-                                                </div>
-                                            </div>
-                                        }
-                                    </div>
-                                </marquee>
-                            )
+                                                        </div>
+                                                    </div>
+                                                }
+                                            </motion.div>
+
+                                        )
+                                    }
+                                </motion.div>
+                            </motion.div>
                         }
                     </div>
                 </div>
@@ -45,3 +53,26 @@ const Advertisement = () => {
 };
 
 export default Advertisement;
+
+
+
+
+// advertisedProduct.map(advertised =>
+//     <marquee direction="right" >
+//         <div key={advertised._id} className='h-60  '>
+//             {
+//                 !advertised.paid === true
+//                 &&
+//                 <div className="card card-compact w-96 bg-base-100 shadow-xl">
+//                     <figure><img className='w-40' src={advertised.img} alt="Shoes" /></figure>
+//                     <div className="card-body">
+//                         <h2 className="card-title font-mono">{advertised.productName}</h2>
+//                         <p className='text-black font-mono font-bold'>Price:{advertised.resalePrice} $</p>
+
+
+//                     </div>
+//                 </div>
+//             }
+//         </div>
+//     </marquee>
+// )

@@ -6,10 +6,10 @@ const useToken = (email) => {
         fetch(`https://assignment-12-server-sable.vercel.app/jwt?email=${email}`)
             .then(res => res.json())
             .then(data => {
-                if (data.token) {
+                if (data?.token) {
 
-                    localStorage.setItem('token', data.token);
-                    setToken(data.token);
+                    localStorage.setItem('token', data?.token);
+                    setToken(data?.token);
                 }
             });
     }, [email]);

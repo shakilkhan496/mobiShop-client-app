@@ -1,15 +1,15 @@
 import { CardElement, useElements, useStripe } from '@stripe/react-stripe-js';
-import { loadStripe } from '@stripe/stripe-js';
 import React, { useEffect, useState } from 'react';
 import toast from 'react-hot-toast';
 
-const stripePromise = loadStripe('pk_test_51M5vv4CLTcmkmHRYbLOL5pjvoNfQe0mptVirDWj3RH2BEY4UcmefgIgys2i8Ax1l5qXILfQyTWeU2ZfUAVOd4ArQ00ZSQnlgsK');
 
 const CheckOut = ({ paymentData }) => {
     const { buyerName, buyerEmail, _id, productName } = paymentData;
     const stripe = useStripe();
     const elements = useElements();
     const [cardErr, serCardErr] = useState('');
+    const [success, setsuccess] = useState('');
+    const [txnId, setTxnId] = useState('');
     const price = paymentData.resalePrice;
 
     const [clientSecret, setClientSecret] = useState("");
@@ -61,7 +61,7 @@ const CheckOut = ({ paymentData }) => {
             console.log('[PaymentMethod]', paymentMethod);
             serCardErr('');
         }
-
+        setsuccess('');
         const { paymentIntent, error: confirmError } = await stripe.confirmCardPayment(
             clientSecret,
             {
@@ -92,6 +92,8 @@ const CheckOut = ({ paymentData }) => {
 
         toast.success('Payment successful');
         if (paymentIntent.status === 'succeeded') {
+            setsuccess('Congratulations!!! Your payment was successful');
+            setTxnId(paymentIntent.id);
             fetch('https://assignment-12-server-sable.vercel.app/payments', {
                 method: 'POST',
                 headers: {
@@ -136,6 +138,31 @@ const CheckOut = ({ paymentData }) => {
                 </button>
             </form>
             {cardErr && <div className='error mt-4 text-primary font-mono font-semibold'>{cardErr}</div>}
+            <div className='mt-6'>
+                {
+                    success &&
+                    <div className="overflow-x-auto">
+                        <table className="table w-full">
+
+                            <thead>
+                                <tr>
+
+                                    <th className='text-center text-xl animate-bounce'>Your Transaction ID</th>
+
+                                </tr>
+                            </thead>
+                            <tbody>
+
+                                <tr>
+                                    <th className='text-center input input-bordered text-xl text-green-500'>{txnId}</th>
+                                </tr>
+
+
+                            </tbody>
+                        </table>
+                    </div>
+                }
+            </div>
         </div>
     );
 };
