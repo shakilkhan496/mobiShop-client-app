@@ -4,9 +4,11 @@ import { Link, useLocation, useNavigate } from 'react-router-dom';
 import Loading from '../../components/Loading/Loading';
 import SmallSpin from '../../components/Loading/SmallSpin';
 import { AuthContext } from '../../contexts/AuthProvider';
+import useTitle from '../../hooks/useTitle';
 import useToken from '../../hooks/useToken';
 
 const Login = () => {
+    useTitle('login')
     const { emailLogin, googleLogin, loading, setLoading } = useContext(AuthContext);
     const [err, setErr] = useState();
     const [loginEmail, setLoginEmail] = useState('');
@@ -64,7 +66,7 @@ const Login = () => {
                 })
                     .then(res => res.json())
                     .then((data) => {
-                        console.log(data);
+
                         setLoginEmail(user.email);
                         toast.success('Login successful');
 

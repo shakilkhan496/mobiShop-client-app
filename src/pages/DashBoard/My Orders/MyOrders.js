@@ -15,7 +15,7 @@ const MyOrders = () => {
         })
             .then(res => res.json())
     })
-    console.log(myOrders);
+
     return (
         <div>
             <div>

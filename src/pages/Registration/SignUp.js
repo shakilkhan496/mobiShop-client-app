@@ -3,9 +3,11 @@ import toast from 'react-hot-toast';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import Loading from '../../components/Loading/Loading';
 import { AuthContext } from '../../contexts/AuthProvider';
+import useTitle from '../../hooks/useTitle';
 import useToken from '../../hooks/useToken';
 
 const SignUp = () => {
+    useTitle('signup');
     const [err, setErr] = useState('');
     const { updateUserProfile, createUser, loading, setLoading } = useContext(AuthContext);
     const [createdUserEmail, setCreatedUserEmail] = useState('')
@@ -37,7 +39,7 @@ const SignUp = () => {
 
                 updateUserProfile(name)
                 const user = data.user;
-                console.log(user)
+
                 toast.success(`Signed up as ${user.email}`)
                 form.reset();
 
@@ -50,7 +52,7 @@ const SignUp = () => {
                 })
                     .then(res => res.json())
                     .then((data) => {
-                        console.log(data);
+
                         setCreatedUserEmail(email);
                     })
 

@@ -7,13 +7,13 @@ import { AuthContext } from '../../../../contexts/AuthProvider';
 const BookModal = ({ booking, setBooking }) => {
     const { user } = useContext(AuthContext);
     const { productName, resalePrice, sellerEmail, img } = booking;
-    console.log(booking);
+
     const handleSubmit = (e) => {
         e.preventDefault();
         const form = e.target;
         const phoneNumber = form.phoneNumber.value;
         const meetingLocation = form.meetingLocation.value;
-        console.log(phoneNumber, meetingLocation);
+
         const bookingData = {
             productName,
             phoneNumber,

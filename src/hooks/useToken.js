@@ -7,7 +7,7 @@ const useToken = (email) => {
             .then(res => res.json())
             .then(data => {
                 if (data.token) {
-                    console.log(data.token);
+
                     localStorage.setItem('token', data.token);
                     setToken(data.token);
                 }

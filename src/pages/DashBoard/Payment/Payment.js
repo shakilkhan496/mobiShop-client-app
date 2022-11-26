@@ -10,7 +10,7 @@ const Payment = () => {
     const paymentData = useLoaderData();
     const navigation = useNavigation();
     const { resalePrice, productName } = paymentData;
-    console.log(paymentData);
+
     if (navigation.state === 'loading') {
         return <Loading></Loading>
     }

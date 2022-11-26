@@ -4,7 +4,7 @@ import CategoryCard from './CategoryCard';
 
 const ProductsCategories = () => {
     const [category, setCategory] = useState([]);
-    console.log(category);
+
 
     useEffect(() => {
         axios.get('http://localhost:5000/categories').then(res => {

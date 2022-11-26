@@ -25,7 +25,7 @@ const AddProducts = () => {
         const sellerPhoneNumber = form.sellerPhoneNumber.value;
         const description = form.description.value;
 
-        console.log(postTime);
+
 
         const formData = new FormData();
         formData.append('image', image);

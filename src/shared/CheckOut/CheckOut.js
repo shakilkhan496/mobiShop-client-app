@@ -55,7 +55,7 @@ const CheckOut = ({ paymentData }) => {
         });
 
         if (error) {
-            console.log('[error]', error);
+
             serCardErr(error.message);
         } else {
             console.log('[PaymentMethod]', paymentMethod);

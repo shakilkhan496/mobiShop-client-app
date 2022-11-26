@@ -5,10 +5,12 @@ import { AuthContext } from '../contexts/AuthProvider';
 import useAdmin from '../hooks/useAdmin';
 import useBuyer from '../hooks/useBuyer';
 import useSeller from '../hooks/useSeller';
+import useTitle from '../hooks/useTitle';
 import Footer from '../shared/Footer/Footer';
 import Navbar from '../shared/Navbar/Navbar';
 
 const DashBoard = () => {
+    useTitle('Dashboard');
     const { user } = useContext(AuthContext);
     const [isAdmin] = useAdmin(user.email);
     const [isSeller] = useSeller(user.email);
