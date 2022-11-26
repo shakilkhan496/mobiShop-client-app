@@ -17,5 +17,9 @@ This is product resell web application.
 
 ### React framework , daisiUi , tailwindCSS ,firebase , MongoDB , TanstackQuery , React-axios etc ...
 
-#live Link : 
+#live Link : https://sell-zone-app-5d1cb.web.app/
+
+adminEmail: admin@gmail.com
+
+adminPassword:admin123
 
