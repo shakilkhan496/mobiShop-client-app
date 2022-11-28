@@ -5,7 +5,7 @@ import { motion } from 'framer-motion'
 const Advertisement = () => {
     const { data: advertisedProduct = [] } = useQuery({
         queryKey: ['advertisedProduct'],
-        queryFn: () => fetch(`https://assignment-12-server-sable.vercel.app/advertised`)
+        queryFn: () => fetch(`https://assignment-12-server-shakilkhan496.vercel.app/advertised`)
             .then(res => res.json())
     })
 

@@ -45,7 +45,7 @@ export const route = createBrowserRouter([
             {
                 path: '/category/:id',
                 element: <PrivateRoute><Products></Products></PrivateRoute>,
-                loader: ({ params }) => fetch(`https://assignment-12-server-sable.vercel.app/category/${params.id}`),
+                loader: ({ params }) => fetch(`https://assignment-12-server-shakilkhan496.vercel.app/category/${params.id}`),
             }
             ,
             {
@@ -88,7 +88,7 @@ export const route = createBrowserRouter([
             {
                 path: 'dashboard/payment/:id',
                 element: <BuyerRoute><Payment></Payment></BuyerRoute>,
-                loader: ({ params }) => fetch(`https://assignment-12-server-sable.vercel.app/orders/${params.id}`)
+                loader: ({ params }) => fetch(`https://assignment-12-server-shakilkhan496.vercel.app/orders/${params.id}`)
             }
         ]
     }

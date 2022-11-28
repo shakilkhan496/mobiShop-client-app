@@ -45,7 +45,7 @@ const SignUp = () => {
                 toast.success(`Signed up as ${user.email}`)
                 form.reset();
 
-                fetch('https://assignment-12-server-sable.vercel.app/users', {
+                fetch('https://assignment-12-server-shakilkhan496.vercel.app/users', {
                     method: 'PUT',
                     headers: {
                         'Content-Type': 'application/json'

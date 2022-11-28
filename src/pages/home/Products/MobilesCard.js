@@ -1,16 +1,32 @@
-import React from 'react';
+import { useQuery } from '@tanstack/react-query';
+import React, { useEffect, useState } from 'react';
 import toast from 'react-hot-toast';
-import verifiedLogo from '../../../assets/icon/bluetik.png'
+import verifiedLogo from '../../../assets/icon/ezgif.com-gif-maker-removebg-preview.png'
 
 const MobilesCard = ({ mobile, setBooking }) => {
-    const { OriginalPrice, img, isVerified, paid, location, postTime, productName, resalePrice, sellerName, useTime, _id } = mobile;
+    const { OriginalPrice, img, sellerEmail, paid, location, postTime, productName, resalePrice, sellerName, useTime, _id } = mobile;
 
+    const [seller, setSeller] = useState({});
+    const { isVerified } = seller;
+    console.log(seller);
+    useEffect(() => {
+        fetch(`https://assignment-12-server-shakilkhan496.vercel.app/seller?email=${sellerEmail}`, {
+            headers: {
+                'Content-Type': 'application/json',
+                authorization: `bearer ${localStorage.getItem('token')}`
+            }
+        })
+            .then(res => res.json())
+            .then(data => {
+                setSeller(data)
+            })
+    }, [sellerEmail])
 
 
     const handleReport = (id) => {
         const confirm = window.confirm('Are you sure you want to report this?');
         if (confirm) {
-            fetch('https://assignment-12-server-sable.vercel.app/report', {
+            fetch('https://assignment-12-server-shakilkhan496.vercel.app/report', {
                 method: 'PUT',
                 headers: {
                     'Content-Type': 'application/json',
@@ -43,7 +59,7 @@ const MobilesCard = ({ mobile, setBooking }) => {
 
                         </div>
                         <div>
-                            <p className='flex items-center'>Seller Name : {sellerName} {isVerified === true ? <img className='w-6 bg-blue-200 rounded-full' alt='verified' src={verifiedLogo}></img> : ''} </p>
+                            <p className='flex items-center'>Seller Name : {sellerName} {isVerified === true ? <img className='w-7 animate-pulse ' alt='verified' src={verifiedLogo}></img> : ''} </p>
                             <p className='text-secondary font-thin'>posted at{postTime}</p>
                         </div>
                         <p></p>

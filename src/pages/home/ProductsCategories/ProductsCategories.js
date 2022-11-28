@@ -7,7 +7,7 @@ const ProductsCategories = () => {
 
 
     useEffect(() => {
-        axios.get('https://assignment-12-server-sable.vercel.app/categories').then(res => {
+        axios.get('https://assignment-12-server-shakilkhan496.vercel.app/categories').then(res => {
             setCategory(res.data)
         })
 

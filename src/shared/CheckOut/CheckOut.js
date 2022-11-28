@@ -16,7 +16,7 @@ const CheckOut = ({ paymentData }) => {
 
     useEffect(() => {
         // Create PaymentIntent as soon as the page loads
-        fetch("https://assignment-12-server-sable.vercel.app/create-payment-intent", {
+        fetch("https://assignment-12-server-shakilkhan496.vercel.app/create-payment-intent", {
             method: "POST",
             headers: {
                 "Content-Type": "application/json",
@@ -94,7 +94,7 @@ const CheckOut = ({ paymentData }) => {
         if (paymentIntent.status === 'succeeded') {
             setsuccess('Congratulations!!! Your payment was successful');
             setTxnId(paymentIntent.id);
-            fetch('https://assignment-12-server-sable.vercel.app/payments', {
+            fetch('https://assignment-12-server-shakilkhan496.vercel.app/payments', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',

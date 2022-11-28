@@ -5,7 +5,7 @@ import toast from 'react-hot-toast';
 const ReportedItems = () => {
     const { data: reportedItems = [], refetch } = useQuery({
         queryKey: ['reportedItems'],
-        queryFn: () => fetch(`https://assignment-12-server-sable.vercel.app/reported`, {
+        queryFn: () => fetch(`https://assignment-12-server-shakilkhan496.vercel.app/reported`, {
             headers: {
                 authorization: `bearer ${localStorage.getItem('token')}`
             }
@@ -15,7 +15,7 @@ const ReportedItems = () => {
     const handleDelete = (id) => {
         const confirm = window.confirm('Are you sure you want to delete?')
         if (confirm) {
-            fetch(`https://assignment-12-server-sable.vercel.app/deleteReported`, {
+            fetch(`https://assignment-12-server-shakilkhan496.vercel.app/deleteReported`, {
                 method: 'DELETE',
                 headers: {
                     'Content-Type': 'application/json',

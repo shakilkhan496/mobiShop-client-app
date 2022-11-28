@@ -1,12 +1,19 @@
 import React, { useContext } from 'react';
 import toast from 'react-hot-toast';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, useNavigation } from 'react-router-dom';
+import Loading from '../../../components/Loading/Loading';
 import { AuthContext } from '../../../contexts/AuthProvider';
 
 const AddProducts = () => {
     const { user } = useContext(AuthContext);
     const date = new Date();
     const navigate = useNavigate();
+
+    const navigation = useNavigation();
+    if (navigation.state === 'loading') {
+        return <Loading></Loading>
+    }
+
 
     const handleSubmit = e => {
         e.preventDefault();
@@ -54,7 +61,7 @@ const AddProducts = () => {
                     status: 'available'
                 }
 
-                fetch('https://assignment-12-server-sable.vercel.app/addProduct', {
+                fetch('https://assignment-12-server-shakilkhan496.vercel.app/addProduct', {
                     method: 'POST',
                     headers: {
                         'Content-Type': 'application/json',

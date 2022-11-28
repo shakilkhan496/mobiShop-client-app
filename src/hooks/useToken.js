@@ -3,7 +3,7 @@ import { useEffect, useState } from "react";
 const useToken = (email) => {
     const [token, setToken] = useState('');
     useEffect(() => {
-        fetch(`https://assignment-12-server-sable.vercel.app/jwt?email=${email}`)
+        fetch(`https://assignment-12-server-shakilkhan496.vercel.app/jwt?email=${email}`)
             .then(res => res.json())
             .then(data => {
                 if (data?.token) {

@@ -24,7 +24,7 @@ const BookModal = ({ booking, setBooking }) => {
             sellerEmail: sellerEmail,
             img
         }
-        fetch('https://assignment-12-server-sable.vercel.app/bookings', {
+        fetch('https://assignment-12-server-shakilkhan496.vercel.app/bookings', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'

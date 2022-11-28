@@ -8,7 +8,7 @@ const MyOrders = () => {
     const { user } = useContext(AuthContext);
     const { data: myOrders = [] } = useQuery({
         queryKey: ['myOrders'],
-        queryFn: () => fetch(`https://assignment-12-server-sable.vercel.app/myOrders?email=${user.email}`, {
+        queryFn: () => fetch(`https://assignment-12-server-shakilkhan496.vercel.app/myOrders?email=${user.email}`, {
             headers: {
                 authorization: `bearer ${localStorage.getItem('token')}`
             }
