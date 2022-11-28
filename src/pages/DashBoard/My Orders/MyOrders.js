@@ -1,7 +1,6 @@
 import { useQuery } from '@tanstack/react-query';
 import React, { useContext } from 'react';
 import { Link } from 'react-router-dom';
-import Loading from '../../../components/Loading/Loading';
 import { AuthContext } from '../../../contexts/AuthProvider';
 
 const MyOrders = () => {
@@ -15,6 +14,7 @@ const MyOrders = () => {
         })
             .then(res => res.json())
     })
+    console.log(myOrders)
 
     return (
         <div>
