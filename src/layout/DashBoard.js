@@ -16,7 +16,7 @@ const DashBoard = () => {
     const [isSeller] = useSeller(user.email);
     const [isUser] = useBuyer(user.email);
     return (
-        <div className='max-w-7xl mx-auto'>
+        <div className=' mx-auto'>
             <Navbar></Navbar>
             <div className="drawer drawer-mobile">
                 <input id="dashboard" type="checkbox" className="drawer-toggle" />
