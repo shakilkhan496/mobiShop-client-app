@@ -9,7 +9,7 @@ const CategoryCard = ({ category }) => {
                 <div className="card p-10 w-80 h-80  shadow hover:shadow-xl transition hover:scale-105">
                     <figure><img className='w-60' src={img} alt={categoryName} /></figure>
                     <div className="card-body">
-                        <h2 className="text-center text-2xl font-mono font-extrabold">{categoryName}</h2>
+                        <h2 className="text-center text-2xl font-mono ">{categoryName}</h2>
                     </div>
                 </div>
             </div>

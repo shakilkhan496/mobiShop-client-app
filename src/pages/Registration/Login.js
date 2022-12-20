@@ -85,7 +85,7 @@ const Login = () => {
 
                     </div>
                     <div className="card flex-shrink-0 w-full max-w-sm shadow-2xl bg-base-100">
-                        <h1 className="text-2xl mt-10 text-center font-mono  font-semibold">Login</h1>
+                        <h1 className="text-2xl mt-10 text-center    font-semibold">Login</h1>
 
                         <form onSubmit={handleSubmit} className="card-body">
                             <div className="form-control">
@@ -100,7 +100,7 @@ const Login = () => {
                                 </label>
                                 <input name='password' type="password" placeholder="password" className="input input-bordered" />
                             </div>
-                            <div className='text-sm font-mono'>
+                            <div className='text-sm  '>
                                 <p>New to our website?</p> <p className='text-primary hover:link   ' ><Link className='animate-pulse' to='/signup'>Register now</Link></p >
                             </div>
                             <div className='text-red-600 m-4'>

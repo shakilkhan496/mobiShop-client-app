@@ -96,7 +96,7 @@ const AddProducts = () => {
                         <input className='input input-bordered' name='productName' placeholder='Product Name' type="text" />
                         <input className='input input-bordered' name='OriginalPrice' placeholder='Original Price' type="text" />
                         <input className='input input-bordered' name='resalePrice' placeholder='Resell price' type="text" />
-                        <label className='text-sm font-mono font-semibold'>Upload product image</label>
+                        <label className='text-sm   font-semibold'>Upload product image</label>
                         <input
                             type='file'
                             id='image'
