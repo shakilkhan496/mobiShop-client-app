@@ -25,7 +25,7 @@ const DashBoard = () => {
                 </div>
                 <div className="drawer-side">
                     <label htmlFor="dashboard" className="drawer-overlay"></label>
-                    <ul className="menu p-4 lg:w-60 w-40 bg-white text-black  ">
+                    <ul className="menu p-4 lg:w-60 w-40 bg-white text-black font-mono">
                         {
                             isAdmin && <>
                                 <li><Link to={`/dashboard/allSellers`} className='btn  hover:outline-primary btn-ghost'>All Sellers</Link></li>

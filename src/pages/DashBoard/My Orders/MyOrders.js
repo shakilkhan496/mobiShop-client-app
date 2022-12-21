@@ -19,7 +19,7 @@ const MyOrders = () => {
     return (
         <div>
             <div>
-                <h1 className='text-2xl   font-bold p-10'>My orders</h1>
+                <h1 className='text-2xl font-mono font-bold p-10'>My orders</h1>
             </div>
             <div>
                 <div className="overflow-x-auto w-full">
@@ -58,13 +58,13 @@ const MyOrders = () => {
                                         </div>
                                     </td>
                                     <td>
-                                        <p className='text-xl font-semibold  '>{myOrder.productName}</p>
+                                        <p className='text-xl font-semibold font-mono'>{myOrder.productName}</p>
                                     </td>
                                     <td className='font-semibold text-xl text-primary'>{myOrder.resalePrice} $</td>
                                     <th>
                                         {
                                             myOrder.resalePrice && !myOrder.paid &&
-                                            <Link to={`dashboard/payment/${myOrder._id}`} className="btn bg-green-600 btn-ghost btn-xs hover:scale-125 hover:bg-primary px-4 text-white  ">
+                                            <Link to={`dashboard/payment/${myOrder._id}`} className="btn bg-green-600 btn-ghost btn-xs hover:scale-125 hover:bg-primary px-4 text-white font-mono">
                                                 Pay
                                             </Link>
                                         }

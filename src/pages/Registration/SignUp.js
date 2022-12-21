@@ -78,9 +78,9 @@ const SignUp = () => {
 
                         </div>
                         <div className="card flex-shrink-0 w-full max-w-sm shadow-2xl bg-base-100">
-                            <h1 className="text-2xl mt-10 text-center    font-semibold">Register</h1>
+                            <h1 className="text-2xl mt-10 text-center font-mono  font-semibold">Register</h1>
 
-                            <form onSubmit={handleSubmit} className="card-body">
+                            <form onSubmit={handleSubmit} className="card-body lg:w-96">
 
                                 <div className="form-control">
                                     <label className="label">
@@ -113,7 +113,7 @@ const SignUp = () => {
                                     <p>{err}</p>
                                 </div>
 
-                                <div className='text-sm  '>
+                                <div className='text-sm font-mono'>
                                     <p>Already have an account?</p> <p className='text-primary hover:link   ' ><Link className='animate-pulse' to='/login'>Login</Link></p >
                                 </div>
                                 <div className="form-control mt-6">

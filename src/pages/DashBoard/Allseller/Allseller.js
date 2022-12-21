@@ -118,7 +118,7 @@ const Allseller = () => {
                                     </td>
 
                                     <th>
-                                        <button onClick={() => handleDelete(seller._id)} className="btn bg-primary btn-ghost btn-xs px-4 text-white  ">Delete seller</button>
+                                        <button onClick={() => handleDelete(seller._id)} className="btn bg-primary btn-ghost btn-xs px-4 text-white font-mono">Delete seller</button>
                                     </th>
                                 </tr>)
                             }

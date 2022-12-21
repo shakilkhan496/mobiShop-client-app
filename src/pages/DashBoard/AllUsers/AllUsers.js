@@ -71,7 +71,7 @@ const AllUsers = () => {
                                     </td>
 
                                     <th>
-                                        <button onClick={() => handleDelete(user._id)} className="btn bg-primary btn-ghost btn-xs px-4 text-white  ">Delete user</button>
+                                        <button onClick={() => handleDelete(user._id)} className="btn bg-primary btn-ghost btn-xs px-4 text-white font-mono">Delete user</button>
                                     </th>
                                 </tr>)
                             }

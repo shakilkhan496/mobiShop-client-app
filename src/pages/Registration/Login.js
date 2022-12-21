@@ -85,9 +85,9 @@ const Login = () => {
 
                     </div>
                     <div className="card flex-shrink-0 w-full max-w-sm shadow-2xl bg-base-100">
-                        <h1 className="text-2xl mt-10 text-center    font-semibold">Login</h1>
+                        <h1 className="text-4xl mt-10 text-center font-mono  font-semibold">Login</h1>
 
-                        <form onSubmit={handleSubmit} className="card-body">
+                        <form onSubmit={handleSubmit} className="card-body lg:w-96">
                             <div className="form-control">
                                 <label className="label">
                                     <span className="label-text">Email</span>
@@ -100,7 +100,7 @@ const Login = () => {
                                 </label>
                                 <input name='password' type="password" placeholder="password" className="input input-bordered" />
                             </div>
-                            <div className='text-sm  '>
+                            <div className='text-sm font-mono'>
                                 <p>New to our website?</p> <p className='text-primary hover:link   ' ><Link className='animate-pulse' to='/signup'>Register now</Link></p >
                             </div>
                             <div className='text-red-600 m-4'>
@@ -115,7 +115,7 @@ const Login = () => {
                         <div>
                             <div className="divider">OR</div>
                         </div>
-                        <button onClick={handleGoogleLogin} className='mb-5 btn bg-secondary w-3/4 text-white ml-8'>Sign in with Google</button>
+                        <button onClick={handleGoogleLogin} className='mb-5 lg:mx-auto btn bg-secondary w-3/4 text-white ml-8'>Sign in with Google</button>
                     </div>
                 </div>
             }

@@ -47,7 +47,7 @@ const MobilesCard = ({ mobile, setBooking }) => {
         <>
             {
                 !paid === true &&
-                <div className="card   shadow hover:shadow-xl">
+                <div className="card font-mono shadow hover:shadow-xl">
                     <figure><img src={img} alt="Shoes" /></figure>
                     <div className="card-body">
                         <div>
